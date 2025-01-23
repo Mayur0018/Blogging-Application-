@@ -7,7 +7,7 @@
   <body>
     <%- include("./partials/navbar.ejs") %>
     <div class="container mb-3">
-      <form>
+      <form action="/blog" method="post">
         <div class="mb-3">
         <label for="Cover-image" class="form-label">Cover Image</label>
         <input
@@ -23,6 +23,7 @@
     <div class="container mb-3">
       <label for="body" class="form-label">Body</label>
       <textarea
+      name="body"
         class="form-control"
         placeholder="Leave a comment here"
         id="floatingTextarea"
