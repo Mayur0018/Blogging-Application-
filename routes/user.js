@@ -1,6 +1,6 @@
 const { Router } = require("express");
-const router = Router();
 const User = require("../models/user");
+const router = Router();
 router.get("/signin", (req, res) => {
   return res.render("signin");
 });
@@ -14,7 +14,7 @@ router.post("/signUp", async (req, res) => {
   await User.create({
     FullName,
     email,
-    password
+    password,
   });
   return res.redirect("/");
 });

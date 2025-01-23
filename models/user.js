@@ -8,7 +8,6 @@ const UserSchema = new Schema(
     },
     salt: {
       type: String,
-      required: true,
     },
     email: {
       type: String,
@@ -46,6 +45,4 @@ UserSchema.pre("save", function (next) {
 });
 const User = model("User", UserSchema);
 
-module.exports = {
-  User,
-};
+module.exports = User;
