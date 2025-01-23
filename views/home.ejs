@@ -5,7 +5,19 @@
     <title>HomePage</title>
   </head>
   <body>
-    <%- include("./partials/navbar.ejs") %> <%= JSON.stringify(blogs) %> <%-
-    include("./partials/script.ejs") %>
+    <%- include("./partials/navbar.ejs") %>
+    <div class="container mt-4 row row-col">
+      <% blogs.forEach(blog => { %>
+      <div class="card" style="width: 18rem">
+        <img src="<%= blog.coverImageUrl %>" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title"><%= blog.title %></h5>
+          <p class="card-text"><%= blog.body %></p>
+          <a href="/blog/<%= blog._id %>" class="btn btn-primary stretched-link">View</a>
+        </div>
+      </div>
+      <%})%>
+    </div>
+    %> <%- include("./partials/script.ejs") %>
   </body>
 </html>
