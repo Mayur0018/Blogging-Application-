@@ -10,12 +10,12 @@
     <div class="container">
       <form action="/user/signUp" method="post">
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">FullName</label>
+          <label for="fullName" class="form-label">FullName</label>
           <input
             type="text"
             class="form-control"
-            id="FullName"
-            name="FullName"
+            id="fullName"
+            name="fullName"
             aria-describedby="FullName"
           />
         </div>
@@ -46,5 +46,6 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
+    <%- include('./partials/script.ejs') %>
   </body>
 </html>

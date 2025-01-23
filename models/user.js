@@ -1,20 +1,21 @@
 const { Schema, model } = require("mongoose");
 const { createHmac, randomBytes } = require("crypto");
-const {createTokenForUser} = require("../services/authentication")
+const { createTokenForUser } = require("../services/authentication");
 const UserSchema = new Schema(
   {
-    FullName: {
+    fullName: {
       type: String,
       required: true,
-    },
-    salt: {
-      type: String,
     },
     email: {
       type: String,
       required: true,
       unique: true,
     },
+    salt: {
+      type: String,
+    },
+
     password: {
       type: String,
       required: true,
@@ -35,7 +36,7 @@ const UserSchema = new Schema(
 UserSchema.pre("save", function (next) {
   const user = this;
   if (!user.isModified("password")) return;
-  const salt = "someRandomSalt"
+  const salt = "someRandomSalt";
   const hashedPassword = createHmac("sha256", salt)
     .update(user.password)
     .digest("hex");
@@ -60,9 +61,9 @@ UserSchema.static("matchPassword", async function (email, password) {
 
   const token = createTokenForUser(user);
   console.log(token);
-  
+
   return token;
 });
-const User = model("User", UserSchema);
+const User = model("user", UserSchema);
 
 module.exports = User;

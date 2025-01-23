@@ -9,24 +9,33 @@
     <div class="container mb-3">
       <form action="/blog" method="post" enctype="multipart/form-data">
         <div class="mb-3">
-        <label for="Cover-image" class="form-label">Cover Image</label>
+        <label for="CoverImage" class="form-label">Cover Image</label>
         <input
           type="file"
           class="form-control"
-          id="title"
-          name="Cover-image"
-          aria-describedby="Cover-image"
+          id="CoverImage"
+          name="CoverImage"
+          aria-describedby="CoverImage"
         />
     </div>
       
     </div>
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          name="title"
+          aria-describedby="title"
+        />
+      </div>
     <div class="container mb-3">
       <label for="body" class="form-label">Body</label>
       <textarea
       name="body"
         class="form-control"
-        placeholder="Leave a comment here"
-        id="floatingTextarea"
+        id="body"
       ></textarea>
       <div class="mt-4">
         <button class="btn btn-primary">Submit</button>
