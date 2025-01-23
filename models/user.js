@@ -47,7 +47,7 @@ UserSchema.pre("save", function (next) {
 UserSchema.static("matchPassword", function (email, password) {
   const user = this.findOne({ email });
   if (!user) {
-    return false;
+    throw new Error("User Not Found");
   }
   const salt = user.salt;
   const hasedPassword = user.password;
@@ -55,8 +55,8 @@ UserSchema.static("matchPassword", function (email, password) {
   const userProvidedHas = createHmac("sha256", salt)
     .update(password)
     .digest("hex");
-
-  return hasedPassword === userProvidedHas;
+  if (hasedPassword !== userProvidedHas) throw new Error("Incoorect Password");
+  return { ...user, password: undefined, salt: undefined };
 });
 const User = model("User", UserSchema);
 
