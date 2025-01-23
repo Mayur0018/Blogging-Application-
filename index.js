@@ -4,6 +4,7 @@
   const cookieParser = require("cookie-parser");
   const userRoutes = require("./routes/user"); // Ensure this file exists
   const BlogRoute = require("./routes/Blog");
+  const Blog = require("./models/blog")
   const app = express();
   const PORT = 8000;
   const {
@@ -27,9 +28,11 @@
   // Routes
   app.use("/user", userRoutes);
   app.use("/blog",BlogRoute);
-  app.get("/", (req, res) => {
+  app.get("/", async (req, res) => {
+    const allBlogs = await Blog.find({}).sort({"createdAt":-1})
     res.render("home", {
       user: req.user,
+      blogs:allBlogs,
     });
   });
 

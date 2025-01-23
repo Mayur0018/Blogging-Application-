@@ -20,6 +20,6 @@ const blogSchema = new Schema({
 },{timestamps: true});
 
 
-const blog = ("Blog",blogSchema);
+const blog = model("Blog",blogSchema);
 
 module.exports = blog;
