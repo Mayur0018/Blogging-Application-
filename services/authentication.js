@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken");
+const JWT = require("jsonwebtoken");
 
 const secret = "$uperMan@123";
 
@@ -9,12 +9,12 @@ function createTokenForUser(user) {
     profileImgUrl: user.profileImgUrl,
     role: user.role,
   };
-  const token = jwt.sign(payload, secret);
+  const token = JWT.sign(payload, secret);
   return token;
 }
 
 function validateToken(token) {
-  const payload = jwt.token(token, secret);
+  const payload = JWT.token(token, secret);
   return payload;
 }
 

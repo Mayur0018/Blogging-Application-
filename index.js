@@ -6,7 +6,7 @@ const userRoutes = require("./routes/user"); // Ensure this file exists
 const BlogRoute = require("./routes/Blog");
 const Blog = require("./models/blog");
 const app = express();
-const PORT = 8000;
+const PORT = 8001;
 const {
   checkForAuthenticationCookie,
 } = require("./middlewares/authentication");
